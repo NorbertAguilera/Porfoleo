@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+/* Sorbus Color Palette */
+:root {
+    --sorbus-50: #fff9ec;
+    --sorbus-100: #fff3d3;
+    --sorbus-200: #ffe3a5;
+    --sorbus-300: #ffcd6d;
+    --sorbus-400: #ffab32;
+    --sorbus-500: #ff900a;
+    --sorbus-600: #ff7800;
+    --sorbus-700: #cc5702;
+    --sorbus-800: #a1430b;
+    --sorbus-900: #82390c;
+    --sorbus-950: #461a04;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--sorbus-500) 0%, var(--sorbus-700) 100%);
+    box-shadow: 0 4px 20px rgba(255, 144, 10, 0.3);
+    z-index: 1000;
+    font-family: 'Comic Neue', cursive;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.brand-text:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: white;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.nav-link:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover::before {
+    width: 80%;
+}
+
+.contact-button {
+    background: linear-gradient(135deg, var(--sorbus-300) 0%, var(--sorbus-600) 100%);
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 700;
+    color: var(--sorbus-950);
+    box-shadow: 0 4px 15px rgba(255, 120, 0, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(255, 120, 0, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(255, 120, 0, 0.6);
+    }
+}
+
+.contact-button:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 25px rgba(255, 120, 0, 0.6);
+}
+
+.contact-button::before {
+    display: none;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: white;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before {
+    top: -10px;
+}
+
+.hamburger::after {
+    bottom: -10px;
+}
+
+.hamburger.open {
+    background: transparent;
+}
+
+.hamburger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.hamburger.open::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: 1rem;
+    }
+
+    .brand-text {
+        font-size: 1.5rem;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .navbar-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: linear-gradient(135deg, var(--sorbus-500) 0%, var(--sorbus-700) 100%);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-links.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        width: 80%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-text {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        font-size: 1.3rem;
+    }
+}
