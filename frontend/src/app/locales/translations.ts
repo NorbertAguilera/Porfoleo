@@ -96,6 +96,7 @@ export const translations: Record<Language, Translations> = {
                 name: 'CicloBnB',
                 description: 'Aplicación móvil para Android que permite a los usuarios alquilar y publicar bicicletas. Desarrollada con Java, XML y MySQL, incluye sistema de autenticación, gestión de reservas y perfil de usuario.',
             },
+            
         },
     },
     en: {

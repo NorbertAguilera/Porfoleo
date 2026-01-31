@@ -35,13 +35,13 @@ export default function Home() {
                     
 
                     {doneProjects.map((project)=>(
-                        <div className="card project-card">
+                        <div className="card project-card" key={project.id}>
                         <div className="project-image">🚀</div>
                         <h3>{project.name}</h3>
                         <p>{project.descriptionKey}</p>
                         <div className="project-tags">
-                            {project.technologies.map((tecnology) =>
-                                <span className='tag'>{tecnology}</span>
+                            {project.technologies.map((tecnology, index) =>
+                                <span className='tag' key={index}>{tecnology}</span>
                             )}
                         </div>
                         <div className="project-buttons">
